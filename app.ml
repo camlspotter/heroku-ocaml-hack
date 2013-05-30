@@ -16,7 +16,7 @@ let f ic oc =
       let out = output_string oc in
       let out_rn s = output_string oc s; output_string oc "\r\n" in
       match String.split (function ' ' -> true | _ -> false) r with
-      | "GET" :: "/opam_archive" :: _ ->
+      | "GET" :: "/opam-lib.tgz" :: _ ->
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: application/octet-stream";
           out_rn "";
@@ -32,7 +32,7 @@ let f ic oc =
           in
           loop ()
       | "GET" :: _ :: _ ->
-          let _, lines = Unix.shell_command_stdout "/tmp/opam/bin/opam list" in
+          let _, lines = Unix.shell_command_stdout "find /tmp" in
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: text/plain";
           out_rn "";
