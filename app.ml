@@ -21,7 +21,7 @@ let f ic oc =
           out_rn "Content-Type: application/octet-stream";
           out_rn "";
           let buf = String.create 10240 in
-          let ic = open_in "opam-lib_system.tgz" in
+          let ic = open_in "opam-lib.tgz" in
           let rec loop () =
             let read = input ic buf 0 10240 in
             if read = 0 then close_in ic
@@ -32,7 +32,7 @@ let f ic oc =
           in
           loop ()
       | "GET" :: _ :: _ ->
-          let _, lines = Unix.shell_command_stdout "find /tmp" in
+          let _, lines = Unix.shell_command_stdout "find /vendor /tmp" in
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: text/plain";
           out_rn "";
