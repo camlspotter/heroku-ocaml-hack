@@ -9,7 +9,7 @@ all:
 	- echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /tmp/opam-lib
 	ls -l opam-lib.tgz
-        opam list > opam-list.txt
+	opam list > opam-list.txt
 	PREFIX=/tmp/opam-lib/system/bin omake
 	mkdir -p target/bin/
 	cp app target/bin/app
