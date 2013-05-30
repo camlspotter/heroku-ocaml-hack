@@ -1,5 +1,18 @@
 open Spotlib.Spot
 
+let send_file oc path =
+  let buf = String.create 10240 in
+  let ic = open_in path in
+  let rec loop () =
+    let read = input ic buf 0 10240 in
+    if read = 0 then close_in ic
+    else begin
+      output oc buf 0 read;
+      loop ()
+    end
+  in
+  loop ()
+
 let f ic oc =
   let inputs = 
     let rec loop rev_lines = 
@@ -13,32 +26,19 @@ let f ic oc =
   match inputs with
   | [] -> assert false
   | r::_ ->
-      let out = output_string oc in
+      let _out = output_string oc in
       let out_rn s = output_string oc s; output_string oc "\r\n" in
       match String.split (function ' ' -> true | _ -> false) r with
       | "GET" :: "/opam-lib.tgz" :: _ ->
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: application/octet-stream";
           out_rn "";
-          let buf = String.create 10240 in
-          let ic = open_in "opam-lib.tgz" in
-          let rec loop () =
-            let read = input ic buf 0 10240 in
-            if read = 0 then close_in ic
-            else begin
-              output oc buf 0 read;
-              loop ()
-            end
-          in
-          loop ()
+          send_file oc "opam-lib.tgz"
       | "GET" :: _ :: _ ->
-          let _, lines = Unix.shell_command_stdout "find /vendor /tmp" in
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: text/plain";
           out_rn "";
-          List.iter (fun line ->
-            out line;) lines;
-          flush oc
+          send_file oc "opam-list.txt"
       | _ -> assert false
 
 let port =
