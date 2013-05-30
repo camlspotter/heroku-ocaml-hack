@@ -23,7 +23,7 @@ let f ic oc =
           let buf = String.create 10240 in
           let ic = open_in "opam-lib_system.tgz" in
           let rec loop () =
-            let read = input ic buf 0 1024 in
+            let read = input ic buf 0 10240 in
             if read = 0 then close_in ic
             else begin
               output oc buf 0 read;
@@ -32,7 +32,7 @@ let f ic oc =
           in
           loop ()
       | "GET" :: _ :: _ ->
-          let _, lines = Unix.shell_command_stdout "opam list" in
+          let _, lines = Unix.shell_command_stdout "/tmp/opam/bin/opam list" in
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: text/plain";
           out_rn "";
