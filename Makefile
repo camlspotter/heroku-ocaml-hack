@@ -1,5 +1,6 @@
 all: 
-	opam remove --yes `opam list -i -s`
+	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
+	opam repository remove myrepo 
 	opam update
 	opam install --yes omake
 	opam install --yes spotlib
