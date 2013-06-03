@@ -34,6 +34,12 @@ let f ic oc =
           out_rn "Content-Type: application/octet-stream";
           out_rn "";
           send_file oc "opam-lib.tgz"
+      | "GET" :: "/find" :: s :: _ ->
+          out_rn "HTTP/1.1 200 OK";
+          out_rn "Content-Type: text/plain";
+          out_rn "";
+          let _, lines = Unix.shell_command_stdout & !% "find %s" s in
+          List.iter out_rn lines
       | "GET" :: _ :: _ ->
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: text/plain";
