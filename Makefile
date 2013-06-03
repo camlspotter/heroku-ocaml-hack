@@ -1,6 +1,7 @@
 all: 
 	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
 	opam repository remove myrepo 
+	opam repository add heroku https://github.com/camlspotter/opam-repository-heroku.git
 	opam update
 	opam install --yes omake
 	opam install --yes spotlib
@@ -8,7 +9,6 @@ all:
 	opam install --yes cryptokit.1.7
 	opam install --yes tiny_json_conv
 	opam install --yes ocurl
-	opam install --yes eliom
 	- echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
 	ls -l opam-lib.tgz
