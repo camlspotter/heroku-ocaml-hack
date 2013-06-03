@@ -22,10 +22,10 @@ all:
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
 
-#	opam install --yes eliom
 
-	-opam install --yes dbm
-	cat /app/vendor/opam-lib/system/build/dbm.1.0/dbm-2913ab*
+	opam install --yes dbm
+
+	opam install --yes eliom
 
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
