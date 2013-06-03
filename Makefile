@@ -11,7 +11,7 @@ all:
 #	opam repository add heroku /app/vendor/opam-repository-heroku-latest
 #	opam repository list
 
-#	opam update
+	opam update
 
 #	# install my owns
 #	opam install --yes omake
