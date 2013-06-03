@@ -5,7 +5,6 @@ all:
 #	opam repository remove myrepo 
 
 	# download heroku custom repo
-	opam repository remove heroku # the archive contains old heroku repo
 	curl -L https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxf - -C /app/vendor
 
 #	# add heroku custom repo
@@ -22,10 +21,9 @@ all:
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
 
+#	opam install --yes dbm
 
-	opam install --yes dbm
-
-	opam install --yes eliom
+#	opam install --yes eliom
 
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
