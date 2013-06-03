@@ -12,3 +12,7 @@ deploy:
 
 To see log:
     heroku logs
+
+bash console
+
+heroku run bash
