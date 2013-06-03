@@ -1,5 +1,5 @@
 all: 
-        opam remove --yes `opam list -i -s`
+	opam remove --yes `opam list -i -s`
 	opam update
 	opam install --yes omake
 	opam install --yes spotlib
