@@ -24,7 +24,8 @@ all:
 #	opam install --yes dbm
 #	opam install --yes eliom
 
-	echo '#include <ndbm.h> int main() { (void) dbm_open("foo", 0, 0); return 0; }' > hasgot.c
+	echo '#include <ndbm.h>' > hasgot.c
+	echo 'int main() { (void) dbm_open("foo", 0, 0); return 0; }' >> hasgot.c
 	gcc -L/app/vendor/gdbm/lib -I/app/vendor/gdbm/include -o hasgot.exe hasgot.c -lgdbm_compat -lgdbm
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
