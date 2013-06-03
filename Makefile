@@ -5,11 +5,12 @@ all:
 #	opam repository remove myrepo 
 
 	# download heroku custom repo
+	opam repository remove heroku # the archive contains old heroku repo
 	curl -L https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxvf - -C /app/vendor
 
 #	# add heroku custom repo
-#	opam repository add heroku /app/vendor/opam-repository-heroku-latest
-#	opam repository list
+	opam repository add heroku /app/vendor/opam-repository-heroku-latest
+	opam repository list
 
 	opam update
 
@@ -23,11 +24,8 @@ all:
 
 #	opam install --yes eliom
 
-	echo '#include <ndbm.h>' > hasgot.c
-	echo 'int main() { (void) dbm_open("foo", 0, 0); return 0; }' >> hasgot.c
-	gcc -L/app/vendor/gdbm/lib -I/app/vendor/gdbm/include -o hasgot.exe hasgot.c -lgdbm_compat -lgdbm
-
-	opam install --yes dbm
+	-opam install --yes dbm
+	cat /app/vendor/opam-lib/system/build/dbm.1.0/*
 
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
