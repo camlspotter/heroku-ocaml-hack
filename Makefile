@@ -20,9 +20,12 @@ all:
 #	opam install --yes cryptokit.1.7
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
+
+	mkdir hoge
+	cp -a /app/vendor/gdbm hoge
+
 	opam install --yes dbm
 #	opam install --yes eliom
-
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
 	ls -l opam-lib.tgz
