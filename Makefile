@@ -5,6 +5,7 @@ all:
 #	opam repository remove myrepo 
 
 	# download heroku custom repo
+	opam repository remove heroku # the archive contains old heroku repo
 	curl -L https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxf - -C /app/vendor
 
 #	# add heroku custom repo
