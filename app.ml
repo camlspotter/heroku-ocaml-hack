@@ -47,7 +47,7 @@ let f ic oc =
               out_rn "HTTP/1.1 200 OK";
               out_rn "Content-Type: text/plain";
               out_rn "";
-              out_rn p;
+              out_rn s;
               send_file oc "opam-list.txt"
           end
       | _ -> assert false
