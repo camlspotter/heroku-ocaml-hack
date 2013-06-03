@@ -17,7 +17,7 @@ all:
 	opam list > opam-list.txt
 	PREFIX=/app/vendor/opam-lib/system/bin omake
 	mkdir -p target/bin/
-	cp app target/bin/app
+	cp main target/bin/main
 
 clean:
 	rm -rf *.cm* *.o *.annot target app

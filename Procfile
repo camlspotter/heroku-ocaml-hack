@@ -1,1 +1,1 @@
-web: ./target/bin/app $PORT
+web: ./target/bin/main $PORT
