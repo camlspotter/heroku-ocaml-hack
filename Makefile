@@ -9,7 +9,8 @@ all:
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
 	opam repository list
-	opam repository add heroku http://github.com/camlspotter/opam-repository-heroku.git
+	- opam repository add heroku http://github.com/camlspotter/opam-repository-heroku.git
+	cat /app/vendor/opam-lib/log/log-4bcc67*
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
 	ls -l opam-lib.tgz
