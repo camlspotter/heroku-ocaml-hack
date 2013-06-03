@@ -7,10 +7,10 @@ all:
 	# opam install --yes tiny_json_conv
 	# opam install --yes ocurl
 	- echo "Freezing OPAM..."
-	tar zcf opam-lib.tgz /tmp/opam-lib
+	tar zcf opam-lib.tgz /app/vendor/opam-lib
 	ls -l opam-lib.tgz
 	opam list > opam-list.txt
-	PREFIX=/tmp/opam-lib/system/bin omake
+	PREFIX=/app/vendor/opam-lib/system/bin omake
 	mkdir -p target/bin/
 	cp app target/bin/app
 
