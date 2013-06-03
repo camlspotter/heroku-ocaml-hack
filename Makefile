@@ -25,7 +25,7 @@ all:
 #	opam install --yes eliom
 
 	-opam install --yes dbm
-	cat /app/vendor/opam-lib/system/build/dbm.1.0/*
+	cat /app/vendor/opam-lib/system/build/dbm.1.0/dbm-2913ab*
 
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
