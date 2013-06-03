@@ -1,5 +1,6 @@
 all: 
-	# opam update
+        opam remove --yes `opam list -i -s`
+	opam update
 	opam install --yes omake
 	opam install --yes spotlib
 	# opam remove ocamlnet
