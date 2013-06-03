@@ -35,7 +35,7 @@ let f ic oc =
           out_rn "";
           send_file oc "opam-lib.tgz"
       | "GET" :: s :: _ :: _ ->
-          begin match String.is_prefix' "/find+" s with
+          begin match String.is_prefix'  "/find+" s with
           | Some p ->
               out_rn "HTTP/1.1 200 OK";
               out_rn "Content-Type: text/plain";
