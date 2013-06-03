@@ -8,7 +8,7 @@ all:
 #	opam install --yes cryptokit.1.7
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
-	curl https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxvf - -C /app/vendor
+	curl -L https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxvf - -C /app/vendor
 	opam repository add heroku /app/vendor/opam-repository-heroku-latest
 	opam repository list
 	@echo "Freezing OPAM..."
