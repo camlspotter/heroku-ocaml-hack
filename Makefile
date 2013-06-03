@@ -4,12 +4,11 @@ all:
 	opam update
 	opam install --yes omake
 	opam install --yes spotlib
-	# opam remove ocamlnet
-	# opam install --yes spotlib.2.2.0
-	# opam install --yes pcre-ocaml.7.0.2
-	# opam install --yes cryptokit.1.7
-	# opam install --yes tiny_json_conv
-	# opam install --yes ocurl
+	opam install --yes pcre-ocaml.7.0.2
+	opam install --yes cryptokit.1.7
+	opam install --yes tiny_json_conv
+	opam install --yes ocurl
+	opam install --yes eliom
 	- echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
 	ls -l opam-lib.tgz
