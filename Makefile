@@ -8,7 +8,7 @@ all:
 #	opam install --yes cryptokit.1.7
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
-	-opam repository add heroku https://github.com/camlspotter/opam-repository-heroku.git
+	OPAMROOT=/app/vendor/opam-lib opam repository add heroku https://github.com/camlspotter/opam-repository-heroku.git
 	-ls -ld /app/vendor/opam-lib/repo
 	-ls -ld /app/vendor/opam-lib/repo/heroku
 	-ls -l /app/vendor/opam-lib/repo/heroku/config
