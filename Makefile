@@ -12,6 +12,7 @@ all:
 	opam repository add heroku /app/vendor/opam-repository-heroku-latest
 	opam repository list
 
+	# Update the repo cache. Otherwise the new heroku repo's information is ignored.
 	opam update
 
 #	# install my owns
@@ -21,10 +22,9 @@ all:
 #	opam install --yes cryptokit.1.7
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
-
 #	opam install --yes dbm
-
 #	opam install --yes eliom
+	opam install --yes orakuda
 
 	@echo "Freezing OPAM..."
 	tar zcf opam-lib.tgz /app/vendor/opam-lib
