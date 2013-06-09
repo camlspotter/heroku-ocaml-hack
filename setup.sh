@@ -8,10 +8,7 @@ mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
 mkdir -p $PREFIX/share/man
 
-git clone https://github.com/OCamlPro/opam.git
-(cd opam; ./configure --prefix=$PREFIX; make; make install)
-
-$PREFIX/bin/opam install omake
+opam install omake
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
