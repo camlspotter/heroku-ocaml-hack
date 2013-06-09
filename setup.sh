@@ -6,7 +6,7 @@ export PREFIX=$HOME/.share/prefix
 export PATH=$PREFIX/bin:$PATH
 mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
-mkdir -p $PREFIX/man
+mkdir -p $PREFIX/share/man
 
 git clone https://github.com/OCamlPro/opam.git
 (cd opam; ./configure --prefix=$PREFIX; make; make install)
