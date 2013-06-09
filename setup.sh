@@ -10,6 +10,7 @@ mkdir -p $PREFIX/share/man
 
 opam init -y
 opam install -y omake
+. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
