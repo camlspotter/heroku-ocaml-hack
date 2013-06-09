@@ -48,5 +48,5 @@ cp main target/bin/main
 
 # opam default has strange behaviour
 
-tar zcvf opam-lib.tgz /app/.opam
+tar zcf opam-lib.tgz /app/.opam
 opam repo
