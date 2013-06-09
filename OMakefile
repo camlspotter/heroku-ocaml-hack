@@ -9,18 +9,52 @@ if $(file-exists OMakeroot)
 
 .PHONY: all install clean
 
-OCAMLPACKS[] =
+OCAMLPACKAGEFLAGS=
+
+# BYTE_ENABLED= true
+
+OCAMLINCLUDES += 
+
+OCAMLFLAGS    += -thread -bin-annot
+OCAMLCFLAGS   +=
+OCAMLOPTFLAGS += 
+OCAML_LINK_FLAGS += 
+OCAML_BYTE_LINK_FLAGS +=
+OCAML_NATIVE_LINK_FLAGS +=
+
+# CAMLP4PACKS[]=
+#     orakuda
+
+OCAMLPACKS[]= 
+    eliom.server
     spotlib
 
-# OCAMLFLAGS    += -thread -annot -bin-annot -g -w A-4-9 -warn-error A-4-6-9-27-31-33
+FILES[] = 
+   graffiti
 
-# OCAMLDEPFLAGS= -syntax camlp4o -package meta_conv.syntax,orakuda.syntax
-# OCAMLPPFLAGS = -syntax camlp4o -package meta_conv.syntax,orakuda.syntax 
+# OCAMLDEPFLAGS= -syntax camlp4o -package orakuda.syntax
+# OCAMLPPFLAGS = -syntax camlp4o -package orakuda.syntax
 
-FILES[] =
-    main
+# MyOCamlProgram(spotinstall, $(FILES))
+# 
+# .PHONY: install
+# install: spotinstall.opt
+# 	install spotinstall.opt $(PREFIX)/bin/spotinstall
 
-PROGRAM = main
+MyOCamlLibrary(graffiti, $(FILES))
 
-NO_INSTALL=true
-MyOCamlProgram($(PROGRAM), $(FILES))
+.PHONY: start
+
+start: graffiti.cmxs
+    println("Starting server...")
+    mkdir_if_not_exists(local/var/log/graffiti)
+    mkdir_if_not_exists(local/var/run)
+    mkdir_if_not_exists(local/var/data/graffiti/ocsipersist)
+    # ocsigenserver.opt automatically replace .cma => cmxs in .conf
+    ocsigenserver.opt -c graffiti-test.conf
+
+# local/var/log/graffiti/errors.log
+# local/var/log/graffiti/access.log
+# local/var/log/graffiti/warnings.log
+# local/var/run/graffiti-cmd
+# local/var/data/graffiti/ocsipersist
