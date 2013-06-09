@@ -1,2 +1,2 @@
-web: start.sh $PORT
+web: ./start.sh $PORT
 

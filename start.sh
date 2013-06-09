@@ -4,6 +4,8 @@ set -e
 
 PORT=$1
 
+sed -e s/PORT/$PORT/g graffiti-test.conf.in > graffiti-test.conf
+
 export RUNTIME=$PWD/runtime
 export LD_LIBRARY_PATH="$RUNTIME/lib:"
 export PATH="$RUNTIME/opam/system/bin:$RUNTIME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
