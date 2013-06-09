@@ -1,2 +1,1 @@
-web: ./start.sh $PORT
-
+web: ./target/bin/main $PORT
