@@ -9,44 +9,26 @@ mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
 mkdir -p $PREFIX/share/man
 
-opam init -y
-. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-opam install -y omake
-opam install -y spotlib
-
-# #	# clean the old opam
-# #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
-# #	opam repository remove myrepo 
+# opam init -y
+# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # 
-# 	# download heroku custom repo
-# 	opam repository remove heroku # the archive contains old heroku repo
-# 	curl -L https://github.com/camlspotter/opam-repository-heroku/archive/latest.tar.gz -s -o - | tar zxf - -C /app/vendor
-# 
-# #	# add heroku custom repo
-# 	opam repository add heroku /app/vendor/opam-repository-heroku-latest
-# 	opam repository list
-# 
-# 	# Update the repo cache. Otherwise the new heroku repo's information is ignored.
-# 	opam update
-# 
-# #	# install my owns
-# #	opam install --yes omake
-# #	opam install --yes spotlib
-# #	opam install --yes pcre-ocaml.7.0.2
-# #	opam install --yes cryptokit.1.7
-# #	opam install --yes tiny_json_conv
-# #	opam install --yes ocurl
-# #	opam install --yes dbm
-# 	opam install --yes eliom
-# 	opam install --yes orakuda
-# 
-# 	@echo "Freezing OPAM..."
-# 	tar zcf opam-lib.tgz /app/vendor/opam-lib
-# 	ls -l opam-lib.tgz
-# 	opam list > opam-list.txt
+# opam install -y omake
+# opam install -y spotlib
 
 omake
 mkdir -p target/bin/
 cp main target/bin/main
+
+function setup() {
+  dir=$1
+  url=$2
+
+  mkdir -p $dir
+  echo "fetching $url to $dir"
+  curl  $url -s -o - | tar zxf - -C $dir
+}
+
+setup / http://49.212.130.159:5963/heroku/opam-lib.tgz
+opam system 4.00.1
+
 tar zcf opam-lib.tgz /app/.opam
