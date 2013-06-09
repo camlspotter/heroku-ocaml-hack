@@ -24,7 +24,7 @@ function setup() {
 # opam install -y omake
 # opam install -y spotlib
 
-setup / http://49.212.130.159:5963/heroku/opam-lib.tgz
+setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
 . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
