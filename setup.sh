@@ -18,22 +18,20 @@ function setup() {
   curl  $url -s -o - | tar zxf - -C $dir
 }
 
-# opam init -y
-# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-# 
-# opam install -y omake
-# opam install -y spotlib
-
+# load 
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
-opam switch 4.00.1
-eval `opam config env`
+# First preparation
+# opam init -y
+# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+eval `opam config env`
 opam install -y omake
 opam install -y spotlib
-
 omake
 mkdir -p target/bin/
 cp main target/bin/main
+
+opam switch 4.00.1
 
 tar zcf opam-lib.tgz /app/.opam
