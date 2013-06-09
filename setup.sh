@@ -12,6 +12,7 @@ opam init -y
 . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 opam install -y omake
+opam install -y spotlib
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
@@ -47,4 +48,4 @@ opam install -y omake
 PREFIX=/app/vendor/opam-lib/system/bin omake
 mkdir -p target/bin/
 cp main target/bin/main
-echo hello > opam-lib.tgz
+tar zcf opam-lib.tgz .opam
