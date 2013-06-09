@@ -3,11 +3,11 @@
   <server>
     <port>PORT</port>
 
-    <logdir>test/var/log/graffiti</logdir>
-    <datadir>test/var/data/graffiti</datadir>
+    <logdir>tmp/var/log/graffiti</logdir>
+    <datadir>tmp/var/data/graffiti</datadir>
     <charset>utf-8</charset>
     
-    <commandpipe>test/var/run/graffiti-cmd</commandpipe>
+    <commandpipe>tmp/var/run/graffiti-cmd</commandpipe>
     <extension findlib-package="ocsigenserver.ext.staticmod"/>
     <extension findlib-package="ocsigenserver.ext.ocsipersist-dbm"/>
     <extension findlib-package="eliom.server"/>
@@ -15,7 +15,7 @@
     
     <host hostfilter="*">
       <static dir="static" />
-      <static dir="test/var/www/graffiti/eliom" />
+      <static dir="tmp/var/www/graffiti/eliom" />
       <eliommodule module="graffiti.cma" />
       <eliom/>
     </host>
