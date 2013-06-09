@@ -8,8 +8,8 @@ mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
 mkdir -p $PREFIX/share/man
 
-opam init
-opam install omake
+opam init -y
+opam install -y omake
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
