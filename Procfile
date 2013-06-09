@@ -1,1 +1,1 @@
-web: ./graffiti
+web: ./target/bin/graffiti
