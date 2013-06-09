@@ -23,7 +23,7 @@ all:
 #	opam install --yes tiny_json_conv
 #	opam install --yes ocurl
 #	opam install --yes dbm
-#	opam install --yes eliom
+	opam install --yes eliom
 	opam install --yes orakuda
 
 	@echo "Freezing OPAM..."
