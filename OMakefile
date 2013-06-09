@@ -47,14 +47,14 @@ MyOCamlLibrary(graffiti, $(FILES))
 
 start: graffiti.cmxs
     println("Starting server...")
-    mkdir_if_not_exists(local/var/log/graffiti)
-    mkdir_if_not_exists(local/var/run)
-    mkdir_if_not_exists(local/var/data/graffiti/ocsipersist)
+    mkdir_if_not_exists(tmp/var/log/graffiti)
+    mkdir_if_not_exists(tmp/var/run)
+    mkdir_if_not_exists(tmp/var/data/graffiti/ocsipersist)
     # ocsigenserver.opt automatically replace .cma => cmxs in .conf
     ocsigenserver.opt -c graffiti-test.conf
 
-# local/var/log/graffiti/errors.log
-# local/var/log/graffiti/access.log
-# local/var/log/graffiti/warnings.log
-# local/var/run/graffiti-cmd
-# local/var/data/graffiti/ocsipersist
+# tmp/var/log/graffiti/errors.log
+# tmp/var/log/graffiti/access.log
+# tmp/var/log/graffiti/warnings.log
+# tmp/var/run/graffiti-cmd
+# tmp/var/data/graffiti/ocsipersist
