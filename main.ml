@@ -24,7 +24,7 @@ let f ic oc =
     loop []
   in
   match inputs with
-  | [] -> assert false
+  | [] -> ()
   | r::_ ->
       let _out = output_string oc in
       let out_rn s = output_string oc s; output_string oc "\r\n" in
@@ -50,7 +50,7 @@ let f ic oc =
               out_rn s;
               send_file oc "opam-list.txt"
           end
-      | _ -> assert false
+      | _ -> ()
 
 let port =
   let port = ref None in
