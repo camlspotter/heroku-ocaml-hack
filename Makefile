@@ -3,7 +3,7 @@ all:
 	mkdir -p target/bin/
 	cp main target/bin/main
 
-	mkdir/app/opam
+	mkdir -p /app/opam
 	cp -a /app/vendor/opam-lib/system opam
 
 clean:
