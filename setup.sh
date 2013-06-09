@@ -1,16 +1,18 @@
 #!/bin/sh
 
 set -e
+set -o pipefail
 
 export PREFIX=$HOME/.share/prefix
 export PATH=$PREFIX/bin:$PATH
 mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
+mkdir -p $PREFIX/man
 
 git clone https://github.com/OCamlPro/opam.git
 (cd opam; ./configure --prefix=$PREFIX; make; make install)
 
-opam install omake
+$PREFIX/bin/opam install omake
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
