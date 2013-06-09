@@ -8,7 +8,6 @@ echo PATH=$PATH
 echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 
 PREFIX=/app/vendor/opam-lib/system/bin omake
-mkdir -p target/bin
 
 mkdir -p runtime
 mkdir -p runtime/lib
