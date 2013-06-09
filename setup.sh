@@ -13,6 +13,8 @@ cp -a /app/vendor/ocaml/lib/* $PREFIX/lib
 git clone https://github.com/OCamlPro/opam.git
 (cd opam; ./configure --prefix=$PREFIX; make; make install)
 
+opam install omake
+
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
 # #	opam repository remove myrepo 
