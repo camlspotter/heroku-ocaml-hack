@@ -9,14 +9,6 @@ mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
 mkdir -p $PREFIX/share/man
 
-# opam init -y
-# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-# 
-# opam install -y omake
-# opam install -y spotlib
-
-. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
 function setup() {
   dir=$1
   url=$2
@@ -26,7 +18,15 @@ function setup() {
   curl  $url -s -o - | tar zxf - -C $dir
 }
 
+# opam init -y
+# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# 
+# opam install -y omake
+# opam install -y spotlib
+
 setup / http://49.212.130.159:5963/heroku/opam-lib.tgz
+
+. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 omake
 mkdir -p target/bin/
