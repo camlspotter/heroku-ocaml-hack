@@ -32,6 +32,6 @@ omake
 mkdir -p target/bin/
 cp main target/bin/main
 
-opam system 4.00.1
+opam switch 4.00.1
 
 tar zcf opam-lib.tgz /app/.opam
