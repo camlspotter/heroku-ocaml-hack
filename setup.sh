@@ -48,5 +48,9 @@ cp main target/bin/main
 
 # opam default has strange behaviour
 
-tar zcf opam-lib.tgz /app/.opam
+opam repo add opam   http://opam.ocamlpro.com
+opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
+opam repo remove default
+opam update
 opam repo
+tar zcf opam-lib.tgz /app/.opam
