@@ -48,11 +48,15 @@ cp main target/bin/main
 
 # opam default has strange behaviour
 
-opam repo add opam   http://opam.ocamlpro.com
-git clone https://github.com/camlspotter/opam-repository-heroku.git
-cp -a opam-repository-heroku /app/opam-repository-heroku
-opam repo add heroku /app/opam-repository-heroku
-opam repo remove default
-opam update
-opam repo
+# OPAM repo tweak
+# opam repo add opam   http://opam.ocamlpro.com
+# git clone https://github.com/camlspotter/opam-repository-heroku.git
+# cp -a opam-repository-heroku /app/opam-repository-heroku
+# opam repo add heroku /app/opam-repository-heroku
+# opam repo remove default
+# opam update
+# opam repo
+
+opam install dbm
+
 tar zcf opam-lib.tgz /app/.opam
