@@ -33,5 +33,6 @@ mkdir -p target/bin/
 cp main target/bin/main
 
 opam switch 4.00.1
+/bin/rm -rf /app/.opam/4.00.1/build
 
-tar zcvf opam-lib.tgz /app/.opam
+tar zcvf opam-lib-4.00.1.tgz /app/.opam
