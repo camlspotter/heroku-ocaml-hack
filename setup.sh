@@ -37,7 +37,6 @@ opam switch 4.00.1
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
-# opam install -y dbm
 
 omake
 mkdir -p target/bin/
@@ -57,6 +56,7 @@ cp main target/bin/main
 # opam update
 # opam repo
 
-opam install dbm
+# opam install -y dbm
 
-tar zcf opam-lib.tgz /app/.opam
+tar zcf opam-lib.tgz /app/.opam .share
+
