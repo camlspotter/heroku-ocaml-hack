@@ -26,12 +26,14 @@ function setup() {
 
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
-. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+opam switch 4.00.1
+eval `opam config env`
+
+opam install -y omake
+opam install -y spotlib
 
 omake
 mkdir -p target/bin/
 cp main target/bin/main
-
-opam switch 4.00.1
 
 tar zcf opam-lib.tgz /app/.opam
