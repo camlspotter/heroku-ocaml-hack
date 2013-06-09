@@ -16,7 +16,7 @@ let send_file oc path =
 let f ic oc =
   let inputs = 
     let rec loop rev_lines = 
-      let s = try input_line ic with e -> !!% "Error %s@." (Printexc.to_string e); "" in 
+      let s = try input_line ic with _ -> "" in 
 !!% "Input %S@." s;
       if s = "\r" || s = "" then List.rev rev_lines
       else loop (s :: rev_lines)
@@ -33,7 +33,7 @@ let f ic oc =
           out_rn "HTTP/1.1 200 OK";
           out_rn "Content-Type: application/octet-stream";
           out_rn "";
-          send_file oc "opam-lib.tgz"
+          begin try send_file oc "/app/opam-lib.tgz" with e -> !!% "Error at opam-lib.tgz: %s@." (Printexc.to_string e) end
       | "GET" :: s :: _ :: _ ->
           begin match String.is_prefix'  "/find+" s with
           | Some p ->
