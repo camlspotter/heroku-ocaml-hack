@@ -6,6 +6,4 @@
 *.opt
 *.omc
 .omakedb*
-\#*
-.\#*
 app
