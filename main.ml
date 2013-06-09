@@ -16,7 +16,7 @@ let send_file oc path =
 let f ic oc =
   let inputs = 
     let rec loop rev_lines = 
-      let s = try input_line ic with _ -> "" in 
+      let s = try input_line ic with e -> !!% "Error %s@." (Printexc.to_string e); "" in 
 !!% "Input %S@." s;
       if s = "\r" || s = "" then List.rev rev_lines
       else loop (s :: rev_lines)

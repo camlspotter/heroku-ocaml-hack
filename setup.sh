@@ -2,6 +2,7 @@
 
 set -e
 
+echo PWD=`pwd`
 export PREFIX=$HOME/.share/prefix
 export PATH=$PREFIX/bin:$PATH
 mkdir -p $PREFIX/bin
