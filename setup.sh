@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -e
-set -o pipefail
 
 export PREFIX=$HOME/.share/prefix
 export PATH=$PREFIX/bin:$PATH
