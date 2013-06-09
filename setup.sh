@@ -49,6 +49,7 @@ cp main target/bin/main
 # opam default has strange behaviour
 
 opam repo add opam   http://opam.ocamlpro.com
+git clone https://github.com/camlspotter/opam-repository-heroku.git
 opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
 opam repo remove default
 opam update
