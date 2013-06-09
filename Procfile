@@ -1,2 +1,2 @@
-web: runtime/opam/system/bin/ocsigenserver.opt -c graffiti-test.conf
+web: start.sh $PORT
 
