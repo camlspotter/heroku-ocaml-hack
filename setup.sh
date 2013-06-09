@@ -23,7 +23,7 @@ setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
 # First preparation
 # opam init -y
-# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 eval `opam config env`
 opam install -y omake
@@ -34,4 +34,4 @@ cp main target/bin/main
 
 opam switch 4.00.1
 
-tar zcf opam-lib.tgz /app/.opam
+tar zcvf opam-lib.tgz /app/.opam
