@@ -2,8 +2,8 @@
 
 set -e
 
-echo BUILD_DIR=$BUILD_DIR
-echo CACHE_DIR=$CACHE_DIR
+PWD=`pwd`
+echo PWD=$PWD
 echo PATH=$PATH
 echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 
@@ -19,7 +19,6 @@ cp -a /app/vendor/gdbm/lib/* runtime/lib
 
 # deploy done
 
-export LD_LIBRARY_PATH="$BUILD_DIR/runtime/lib:$LD_LIBRARY_PATH"
-export PATH="$BUILD_DIR/runtime/opam/system/bin:$BUILDDIR/runtime/bin:$PATH"
+export LD_LIBRARY_PATH="$BUILD_DIR/runtime/lib:"
+export PATH="$BUILD_DIR/runtime/opam/system/bin:$BUILDDIR/runtime/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 export CAML_LD_LIBRARY_PATH=$BUILD_DIR/runtime/opam/system/lib/stublibs
-
