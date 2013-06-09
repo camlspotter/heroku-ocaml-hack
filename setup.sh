@@ -23,8 +23,9 @@ setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
 # First preparation
 # opam init -y
-. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+opam switch 4.00.1
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
@@ -32,7 +33,7 @@ omake
 mkdir -p target/bin/
 cp main target/bin/main
 
-opam switch 4.00.1
-/bin/rm -rf /app/.opam/4.00.1/build
+# opam switch 4.00.1
+# /bin/rm -rf /app/.opam/4.00.1/build
 
-tar zcvf opam-lib-4.00.1.tgz /app/.opam
+tar zcvf opam-lib.tgz /app/.opam
