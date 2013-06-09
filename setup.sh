@@ -15,9 +15,7 @@ mkdir -p $PREFIX/share/man
 # opam install -y omake
 # opam install -y spotlib
 
-omake
-mkdir -p target/bin/
-cp main target/bin/main
+. /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 function setup() {
   dir=$1
@@ -29,6 +27,11 @@ function setup() {
 }
 
 setup / http://49.212.130.159:5963/heroku/opam-lib.tgz
+
+omake
+mkdir -p target/bin/
+cp main target/bin/main
+
 opam system 4.00.1
 
 tar zcf opam-lib.tgz /app/.opam
