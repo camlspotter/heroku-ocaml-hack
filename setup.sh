@@ -1,9 +1,17 @@
 #!/bin/sh
 
-mkdir -p .share/prefix/bin
-mkdir -p .share/prefix/lib
+set -e
+
+export PREFIX=$HOME/.share/prefix
+export PATH=$PREFIX/bin:$PATH
+mkdir -p $PREFIX/bin
+mkdir -p $PREFIX/lib
+
+cp -a /app/vendor/ocaml/bin/* $PREFIX/bin
+cp -a /app/vendor/ocaml/lib/* $PREFIX/lib
+
 git clone https://github.com/OCamlPro/opam.git
-(cd opam; ./configure; make; make install)
+(cd opam; ./configure --prefix=$PREFIX; make; make install)
 
 # #	# clean the old opam
 # #	opam remove --yes `opam list -i -s | sed -e 's/base-[^ ]*//g'`
@@ -39,9 +47,4 @@ git clone https://github.com/OCamlPro/opam.git
 PREFIX=/app/vendor/opam-lib/system/bin omake
 mkdir -p target/bin/
 cp main target/bin/main
-
-export PREFIX=.share/prefix/bin
-mkdir -p $PREFIX/bin
-mkdir -p $PREFIX/lib
-cp -a /app/vendor/ocaml/bin/* $PREFIX/bin
-cp -a /app/vendor/ocaml/lib/* $PREFIX/lib
+echo hello > opam-lib.tgz
