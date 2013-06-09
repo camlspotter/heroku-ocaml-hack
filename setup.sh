@@ -21,6 +21,14 @@ function setup() {
 # load 
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
+setup $PREFIX/ https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
+export PATH="$PREFIX/pcre/bin:$PATH"
+export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
+
+setup $PREFIX/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
+export PATH="$PREFIX/gdbm/bin:$PATH"
+export LD_LIBRARY_PATH=$PREFIX/gdbm/lib:$LD_LIBRARY_PATH
+
 # First preparation
 # opam init -y
 # . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
@@ -29,6 +37,8 @@ opam switch 4.00.1
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
+# opam install -y dbm
+
 omake
 mkdir -p target/bin/
 cp main target/bin/main
@@ -36,4 +46,7 @@ cp main target/bin/main
 # opam switch 4.00.1
 # /bin/rm -rf /app/.opam/4.00.1/build
 
+# opam default has strange behaviour
+
 tar zcvf opam-lib.tgz /app/.opam
+opam repo
