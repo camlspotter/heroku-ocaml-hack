@@ -45,7 +45,7 @@ opam install -y spotlib
 # 	ls -l opam-lib.tgz
 # 	opam list > opam-list.txt
 
-PREFIX=/app/vendor/opam-lib/system/bin omake
+omake
 mkdir -p target/bin/
 cp main target/bin/main
-tar zcf opam-lib.tgz .opam
+tar zcf opam-lib.tgz /app/.opam
