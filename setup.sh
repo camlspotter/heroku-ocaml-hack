@@ -7,9 +7,6 @@ export PATH=$PREFIX/bin:$PATH
 mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
 
-cp -a /app/vendor/ocaml/bin/* $PREFIX/bin
-cp -a /app/vendor/ocaml/lib/* $PREFIX/lib
-
 git clone https://github.com/OCamlPro/opam.git
 (cd opam; ./configure --prefix=$PREFIX; make; make install)
 
