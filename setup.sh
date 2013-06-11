@@ -21,13 +21,13 @@ function setup() {
 # load 
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
-setup $PREFIX/ https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
-export PATH="$PREFIX/pcre/bin:$PATH"
-export LD_LIBRARY_PATH=$PREFIX/pcre/lib:$LD_LIBRARY_PATH
+setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
+export PATH="/app/vendor/pcre/bin:$PATH"
+export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
 
-setup $PREFIX/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
-export PATH="$PREFIX/gdbm/bin:$PATH"
-export LD_LIBRARY_PATH=$PREFIX/gdbm/lib:$LD_LIBRARY_PATH
+setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
+export PATH="/app/vendor/gdbm/bin:$PATH"
+export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 # First preparation
 # opam init -y
@@ -58,5 +58,6 @@ cp main target/bin/main
 
 # opam install -y dbm
 
+cp -a /app/vendor vendor
 tar zcf opam-lib.tgz -C /app .opam .share
-tar zxvf opam-lib.tgz
+tar zxf opam-lib.tgz
