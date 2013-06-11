@@ -58,4 +58,4 @@ cp main target/bin/main
 
 # opam install -y dbm
 
-tar zcf opam-lib.tgz /app/.opam /app/.share
+tar zcvf opam-lib.tgz /app/.opam /app/.share
