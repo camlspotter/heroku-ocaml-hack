@@ -58,7 +58,6 @@ cp main target/bin/main
 
 # opam install -y dbm
 
-cp -a /app/vendor vendor
-tar zcf opam-lib.tgz -C /app/.opam /app/.share /app/vendor
-
-
+mkdir vendor
+cp -a /app/vendor/pcre /app/vendor/gdbm vendor
+tar zcf opam-lib.tgz -C /app/.opam /app/.share /app/vendor/pcre /app/vendor/gdbm
