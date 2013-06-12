@@ -70,8 +70,9 @@ opam update
 # opam switch remove -y system
 
 opam install -y dbm
+opam install -y eliom
 
 /bin/rm -rf /app/.opam/log/*
 /bin/rm -rf /app/.opam/4.00.1+custom/build/*
 tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
-tar zxf opam-lib.tgz
+
