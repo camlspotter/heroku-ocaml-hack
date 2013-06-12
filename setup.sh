@@ -33,46 +33,46 @@ export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 # opam init -y
 # . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-opam switch list
-# opam switch 4.00.1+custom # already done
-eval `opam config env`
-opam install -y omake
-opam install -y spotlib
-
-omake
-mkdir -p target/bin/
-cp main target/bin/main
+# OPAM repo tweak
+# opam repo add opam   http://opam.ocamlpro.com
+git clone https://github.com/camlspotter/opam-repository-heroku.git
+mv opam-repository-heroku /app/opam-repository-heroku
+# opam repo add heroku /app/opam-repository-heroku
+# opam repo remove default
+opam update
+# opam repo
 
 # opam switch 4.00.1
 # /bin/rm -rf /app/.opam/4.00.1/build
 
 # opam default has strange behaviour
 
+opam switch list
+opam switch 4.00.1+custom
+opam switch remove 4.00.1
+
+eval `opam config env`
+opam install -y omake
+opam install -y spotlib
+omake
+mkdir -p target/bin/
+cp main target/bin/main
+
 # OPAM repo tweak
-# opam repo add opam   http://opam.ocamlpro.com
+# opam repo add opam  http://opam.ocamlpro.com
 # git clone https://github.com/camlspotter/opam-repository-heroku.git
 # cp -a opam-repository-heroku /app/opam-repository-heroku
 # opam repo add heroku /app/opam-repository-heroku
 # opam repo remove default
 # opam update
-# opam repo
-
-# OPAM repo tweak
-# opam repo add opam  http://opam.ocamlpro.com
-git clone https://github.com/camlspotter/opam-repository-heroku.git
-cp -a opam-repository-heroku /app/opam-repository-heroku
-# opam repo add heroku /app/opam-repository-heroku
-# opam repo remove default
-opam update
 
 # opam switch 4.00.1+custom
 # opam switch remove -y 4.00.1
 # opam switch remove -y system
 
-opam install -y dbm
-opam install -y eliom
+# opam install -y dbm
+# opam install -y eliom
 
 /bin/rm -rf /app/.opam/log/*
 /bin/rm -rf /app/.opam/4.00.1+custom/build/*
 tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
-
