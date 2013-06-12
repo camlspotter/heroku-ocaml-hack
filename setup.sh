@@ -21,13 +21,15 @@ function setup() {
 # load 
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
-setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
-export PATH="/app/vendor/pcre/bin:$PATH"
-export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
-
-setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
-export PATH="/app/vendor/gdbm/bin:$PATH"
-export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+# # included in my-opam-lib.tgz
+# setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
+# export PATH="/app/vendor/pcre/bin:$PATH"
+# export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
+ 
+# # included in my-opam-lib.tgz
+# setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
+# export PATH="/app/vendor/gdbm/bin:$PATH"
+# export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 # First preparation
 # opam init -y
@@ -56,8 +58,16 @@ cp main target/bin/main
 # opam update
 # opam repo
 
+# OPAM repo tweak
+# opam repo add opam  http://opam.ocamlpro.com
+git clone https://github.com/camlspotter/opam-repository-heroku.git
+cp -a opam-repository-heroku /app/opam-repository-heroku
+# opam repo add heroku /app/opam-repository-heroku
+# opam repo remove default
+opam update
+opam switch
+
 # opam install -y dbm
 
-mkdir vendor
-tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
-tar zxvf opam-lib.tgz
+# tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
+# tar zxvf opam-lib.tgz
