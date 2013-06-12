@@ -65,8 +65,8 @@ cp -a opam-repository-heroku /app/opam-repository-heroku
 # opam repo add heroku /app/opam-repository-heroku
 # opam repo remove default
 opam update
-opam switch remove -y 4.00.1
 opam switch 4.00.1+custom
+opam switch remove -y 4.00.1
 
 # opam install -y dbm
 
