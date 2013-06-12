@@ -67,9 +67,13 @@ cp -a opam-repository-heroku /app/opam-repository-heroku
 opam update
 opam switch 4.00.1+custom
 opam switch remove -y 4.00.1
+opam switch remove -y system
 
 # opam install -y dbm
 
+/bin/rm -rf /app/.opam/log/*
 /bin/rm -rf /app/.opam/4.00.1
+/bin/rm -rf /app/.opam/system
+/bin/rm -rf /app/.opam/4.00.1+custom/build/*
 tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
-tar zxvf opam-lib.tgz
+tar zvf opam-lib.tgz
