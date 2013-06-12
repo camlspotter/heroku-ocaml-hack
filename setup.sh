@@ -22,20 +22,20 @@ function setup() {
 setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
 # # included in my-opam-lib.tgz
-setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
-export PATH="/app/vendor/pcre/bin:$PATH"
-export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
+# setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
+# export PATH="/app/vendor/pcre/bin:$PATH"
+# export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
  
 # # included in my-opam-lib.tgz
-setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
-export PATH="/app/vendor/gdbm/bin:$PATH"
-export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+# setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
+# export PATH="/app/vendor/gdbm/bin:$PATH"
+# export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 # First preparation
 # opam init -y
 # . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-opam switch 4.00.1
+opam switch 4.00.1+custom
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
@@ -65,15 +65,16 @@ cp -a opam-repository-heroku /app/opam-repository-heroku
 # opam repo add heroku /app/opam-repository-heroku
 # opam repo remove default
 opam update
-opam switch 4.00.1+custom
-opam switch remove -y 4.00.1
-opam switch remove -y system
+
+# opam switch 4.00.1+custom
+# opam switch remove -y 4.00.1
+# opam switch remove -y system
 
 # opam install -y dbm
 
 /bin/rm -rf /app/.opam/log/*
-/bin/rm -rf /app/.opam/4.00.1
-/bin/rm -rf /app/.opam/system
+# /bin/rm -rf /app/.opam/4.00.1
+# /bin/rm -rf /app/.opam/system
 /bin/rm -rf /app/.opam/4.00.1+custom/build/*
 tar zcf opam-lib.tgz -C /app .opam .share vendor/pcre vendor/gdbm
 # tar zxf opam-lib.tgz
