@@ -49,7 +49,7 @@ opam update
 
 opam switch list
 opam switch 4.00.1+custom
-opam switch remove 4.00.1
+# opam switch remove 4.00.1
 
 eval `opam config env`
 opam install -y omake
@@ -57,6 +57,9 @@ opam install -y spotlib
 omake
 mkdir -p target/bin/
 cp main target/bin/main
+
+opam install -y dbm
+opam install -y eliom
 
 # OPAM repo tweak
 # opam repo add opam  http://opam.ocamlpro.com
