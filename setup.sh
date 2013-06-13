@@ -38,7 +38,7 @@ opam init -y
 git clone https://github.com/camlspotter/opam-repository-heroku.git
 mv opam-repository-heroku /app/opam-repository-heroku
 # this is to update only heroku
-opam repo remove heroku
+# opam repo remove heroku
 opam repo add heroku /app/opam-repository-heroku
 
 ################################################# build opam
