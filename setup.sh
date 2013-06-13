@@ -43,8 +43,8 @@ opam repo add heroku /app/opam-repository-heroku
 
 ################################################# build opam
 
-git clone https://github.com/OCamlPro/opam.git
-(cd opam; ./configure --prefix /app/.share/prefix; make; make install)
+setup /app http://49.212.130.159:5963/heroku/opam.1.0.1.tgz
+(cd /app/opam; ./configure --prefix /app/.share/prefix; make; make install)
 
 # # opam switch 4.00.1
 # # /bin/rm -rf /app/.opam/4.00.1/build
