@@ -60,7 +60,12 @@ opam repo add heroku /app/opam-repository-heroku
 # /bin/rm -rf /app/.opam/log/*
 # /bin/rm -rf /app/.opam/4.00.1+custom/build/*
 
-tar zcvf opam-ilb.tgz -C /app .opam .share vendor/pcre vendor/gdbm
+tar zcvf opam-lib.tgz -C /app .opam
+
+########################################## copy which I want to use later
+
+mkdir -p vendor
+cp -a /app/vendor/ocaml vendor/
 
 ################################################## copy server
 
