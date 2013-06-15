@@ -2,6 +2,8 @@
 
 set -e
 
+umask 0777
+
 echo PWD=`pwd`
 export PREFIX=$HOME/.share/prefix
 export PATH=$PREFIX/bin:$PATH
@@ -29,10 +31,5 @@ setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
 export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
-setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
-export PATH="/app/vendor/gdbm/bin:$PATH"
-export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
-
 setup /app http://49.212.130.159:5963/heroku/ocaml-4.00.1-custom.tgz
 export PATH="/app/vendor/ocaml/bin:$PATH"
-
