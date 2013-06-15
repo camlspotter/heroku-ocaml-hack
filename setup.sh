@@ -3,11 +3,11 @@
 set -e
 
 echo PWD=`pwd`
-export PREFIX=$HOME/.share/prefix
-export PATH=$PREFIX/bin:$PATH
-mkdir -p $PREFIX/bin
-mkdir -p $PREFIX/lib
-mkdir -p $PREFIX/share/man
+# export PREFIX=$HOME/.share/prefix
+# export PATH=$PREFIX/bin:$PATH
+# mkdir -p $PREFIX/bin
+# mkdir -p $PREFIX/lib
+# mkdir -p $PREFIX/share/man
 
 function setup() {
   dir=$1
@@ -38,7 +38,9 @@ opam init -y
 git clone https://github.com/camlspotter/opam-repository-heroku.git
 mv opam-repository-heroku /app/opam-repository-heroku
 # this is to update only heroku
-# opam repo remove heroku
+if [ -d /app/.opam/heroku ]; then
+  opam repo remove heroku
+fi
 opam repo add heroku /app/opam-repository-heroku
 
 ################################################# build opam
@@ -60,21 +62,24 @@ opam repo add heroku /app/opam-repository-heroku
 # /bin/rm -rf /app/.opam/log/*
 # /bin/rm -rf /app/.opam/4.00.1+custom/build/*
 
-tar zcvf opam-lib.tgz -C /app .opam
-
-########################################## copy which I want to use later
-
-mkdir -p vendor
-cp -a /app/vendor/ocaml vendor/
-
-################################################## copy server
-
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
-omake
-mkdir -p target/bin/
-cp main target/bin/main
+tar zcvf opam-lib.tgz -C /app .opam
+
+# ########################################## copy which I want to use later
+# 
+# mkdir -p vendor
+# cp -a /app/vendor/ocaml vendor/
+# 
+# ################################################## copy server
+# 
+# eval `opam config env`
+# opam install -y omake
+# opam install -y spotlib
+# omake
+# mkdir -p target/bin/
+# cp main target/bin/main
 
 # opam install -y dbm
 # opam install -y eliom
