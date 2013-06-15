@@ -2,7 +2,7 @@
 
 set -e
 
-umask 0777
+umask 0000
 
 echo PWD=`pwd`
 export PREFIX=$HOME/.share/prefix
