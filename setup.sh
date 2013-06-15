@@ -30,7 +30,7 @@ export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 # First preparation
-/app/vendor/opam/bin/opam init -y
+opam init -y
 # . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 ################################################# heroku special repo
