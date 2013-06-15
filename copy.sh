@@ -33,3 +33,6 @@ export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 setup /app http://49.212.130.159:5963/heroku/ocaml-4.00.1-custom.tgz
 export PATH="/app/vendor/ocaml/bin:$PATH"
+
+setup /app http://49.212.130.159:5963/heroku/opam.tgz
+export PATH="/app/vendor/opam/bin:$PATH"
