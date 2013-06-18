@@ -34,3 +34,8 @@ export PATH="/app/vendor/ocaml/bin:$PATH"
 
 setup /app http://49.212.130.159:5963/heroku/opam.tgz
 export PATH="/app/vendor/opam/bin:$PATH"
+
+setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
+eval `opam config env`
+
+
