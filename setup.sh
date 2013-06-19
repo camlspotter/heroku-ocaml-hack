@@ -29,19 +29,19 @@ setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
 export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
-# First preparation
-opam init -y
-# . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
 
-################################################# heroku special repo
-
-git clone https://github.com/camlspotter/opam-repository-heroku.git
-mv opam-repository-heroku /app/opam-repository-heroku
-# this is to update only heroku
-if [ -d /app/.opam/heroku ]; then
-  opam repo remove heroku
-fi
-opam repo add heroku /app/opam-repository-heroku
+# # . /app/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# 
+# ################################################# heroku special repo
+# 
+# git clone https://github.com/camlspotter/opam-repository-heroku.git
+# mv opam-repository-heroku /app/opam-repository-heroku
+# # this is to update only heroku
+# if [ -d /app/.opam/heroku ]; then
+#   opam repo remove heroku
+# fi
+# opam repo add heroku /app/opam-repository-heroku
 
 ################################################# build opam
 # It fails...

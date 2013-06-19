@@ -21,7 +21,7 @@ function setup() {
 # load 
 # setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
-setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
+setup /app http://49.212.130.159:5963/heroku/pcre.tar.gz
 export PATH="/app/vendor/pcre/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
  
@@ -37,5 +37,3 @@ export PATH="/app/vendor/opam/bin:$PATH"
 
 setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
 eval `opam config env`
-
-
