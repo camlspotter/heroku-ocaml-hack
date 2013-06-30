@@ -65,7 +65,8 @@ setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
 eval `opam config env`
 opam install -y omake
 opam install -y spotlib
-tar zcvf opam-lib.tgz -C /app .opam
+# opam install treeprint orakuda CamlGI meta_conv pa_ovisitor
+# tar zcvf opam-lib.tgz -C /app .opam
 
 # ########################################## copy which I want to use later
 # 
@@ -77,9 +78,9 @@ tar zcvf opam-lib.tgz -C /app .opam
 # eval `opam config env`
 # opam install -y omake
 # opam install -y spotlib
-# omake
-# mkdir -p target/bin/
-# cp main target/bin/main
+omake
+mkdir -p target/bin/
+cp main target/bin/main
 
 # opam install -y dbm
 # opam install -y eliom
