@@ -102,3 +102,4 @@ cp main target/bin/main
 # opam install -y dbm
 # opam install -y eliom
 
+./build-ocamloscope.sh
