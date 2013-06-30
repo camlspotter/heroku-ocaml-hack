@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-umask 0022
+umask 022
 
 echo PWD=`pwd`
 export PREFIX=$HOME/.share/prefix
