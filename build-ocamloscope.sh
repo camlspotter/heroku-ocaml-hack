@@ -28,7 +28,7 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 # copy opam
 (cd /app; tar cf - .opam/system/bin) | tar xvf -
 (cd /app; tar cf - `find .opam -name META`) | tar xvf -
-(cd /app; tar cf - `find .opam -name '*.cmxs'`) | tar xvf -
+(cd /app; tar cf - `find .opam -name '*.cm*'`) | tar xvf -
 (cd /app; tar cf - .opam/system/lib/findlib.conf) | tar xvf -
  
 
