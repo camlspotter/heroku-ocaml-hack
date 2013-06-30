@@ -78,6 +78,8 @@ opam install -y spotlib
 # eval `opam config env`
 # opam install -y omake
 # opam install -y spotlib
+mkdir -p $HOME/.share/prefix
+export PREFIX=$HOME/.share/prefix
 omake
 mkdir -p target/bin/
 cp main target/bin/main
