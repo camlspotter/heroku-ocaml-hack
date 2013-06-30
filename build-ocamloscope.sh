@@ -12,6 +12,7 @@ cp ocamldoc/odoc_info.cmxs ocamlaseliom.cmxs $WORK/ocamloscope
 
 echo WORK=$WORK
 cd $WORK
+/bin/rm -rf heroku-ocamloscope
 
 # copy gdbm
 mkdir -p $WORK/vendor
@@ -23,7 +24,7 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 (cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
 
 # copy opam
-(cd /app; tar cf - .opam/bin) | tar xvf -
+(cd /app; tar cf - .opam/system/bin) | tar xvf -
 (cd /app; tar cf - `find .opam -name META`) | tar xvf -
 (cd /app; tar cf - `find .opam -name '*.cmxs'`) | tar xvf -
  
