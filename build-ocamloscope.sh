@@ -8,7 +8,25 @@ curl -o ocaml-build.tgz http://49.212.130.159:5963/heroku/ocaml-build.tgz
 tar zxvf ocaml-build.tgz build/ocaml/ocamldoc
 mv build/ocaml/ocamldoc .
 omake
-mv `find . -name '*.cmxs'` ..
+cp ocamldoc/odoc_info.cmxs ocamlaseliom.cmxs $WORK/ocamloscope
+
+echo WORK=$WORK
+cd $WORK
+
+# copy gdbm
+mkdir -p $WORK/vendor
+cp -a /app/vendor/gdbm $WORK/vendor/gdbm
+# export PATH="/app/vendor/gdbm/bin:$PATH"
+# export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+
+# copy ocaml cmxs
+(cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
+
+# copy opam
+(cd /app; tar cf - .opam/bin) | tar xvf -
+(cd /app; tar cf - `find .opam -name META`) | tar xvf -
+(cd /app; tar cf - `find .opam -name '*.cmxs'`) | tar xvf -
+ 
 
 
  
