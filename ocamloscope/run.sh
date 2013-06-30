@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
 export PATH=/app/.opam/system/bin:$PATH
 
 PORT=$1

@@ -14,11 +14,13 @@ echo WORK=$WORK
 cd $WORK
 /bin/rm -rf heroku-ocamloscope
 
-# copy gdbm
 mkdir -p $WORK/vendor
+
+# copy pcre
+cp -a /app/vendor/pcre $WORK/vendor/pcre
+
+# copy gdbm
 cp -a /app/vendor/gdbm $WORK/vendor/gdbm
-# export PATH="/app/vendor/gdbm/bin:$PATH"
-# export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 # copy ocaml cmxs
 (cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
@@ -27,6 +29,7 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 (cd /app; tar cf - .opam/system/bin) | tar xvf -
 (cd /app; tar cf - `find .opam -name META`) | tar xvf -
 (cd /app; tar cf - `find .opam -name '*.cmxs'`) | tar xvf -
+(cd /app; tar cf - .opam/system/lib/findlib.conf) | tar xvf -
  
 
 
