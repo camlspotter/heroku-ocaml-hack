@@ -3,7 +3,8 @@ init:
 
 create the heroku instance(?):
     heroku apps:create ocaml-hack --buildpack https://github.com/camlspotter/heroku-buildpack-ocaml
-    heroku config:set BUILDPACK_URL=https://github.com/mzp/heroku-buildpack-ocaml
+    # heroku config:set BUILDPACK_URL=https://github.com/mzp/heroku-buildpack-ocaml
+    heroku config:set BUILDPACK_URL=https://github.com/camlspotter/heroku-buildpack-ocaml
 
 write ocaml
 
