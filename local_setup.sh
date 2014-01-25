@@ -26,8 +26,17 @@ function setup() {
 # setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
 setup /app http://$sakura/heroku/ocaml-4.01.0-bin.tgz
+export PATH=/app/vendor/ocaml/bin:$PATH
+
 setup /app http://$sakura/heroku/opam-1.1.0-bin.tgz
-setup /app http://$sakura/heroku/opam-root.tgz
+export PATH=/app/vendor/opam/bin:$PATH
+
+export OPAMROOT=/app/vendor/.opam
+if [ ! -d $OPAMROOT ]; then 
+  mkdir /app/vendor/.opam
+  yes N | opam init
+  opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
+fi
 
 setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
 export PATH="/app/vendor/pcre/bin:$PATH"
