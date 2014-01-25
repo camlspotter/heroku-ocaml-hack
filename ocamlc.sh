@@ -17,7 +17,7 @@ tar zxvf ocaml-4.01.0.tar.gz
 cd ocaml-4.01.0
 ./configure --prefix /app/vendor/ocaml
 make world.opt install
-
+ 
 export PATH=/app/vendor/ocaml/bin:$PATH
 
 cd
@@ -25,6 +25,8 @@ curl -o opam-full-1.1.0.tar.gz http://www.ocamlpro.com/pub/opam-full-1.1.0.tar.g
 tar zxvf opam-full-1.1.0.tar.gz
 cd opam-full-1.1.0
 ./configure --prefix /app/vendor/opam
+make
+make install
 cd
 tar zcvf opam-1.1.0-bin.tgz vendor/opam
 

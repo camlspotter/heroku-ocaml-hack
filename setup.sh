@@ -3,6 +3,8 @@
 
 set -e
 
+export sakura=49.212.130.159:5963
+
 echo PWD=`pwd`
 export WORK=`pwd`
 # export PREFIX=$HOME/.share/prefix
@@ -22,6 +24,18 @@ function setup() {
 
 # load 
 # setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
+
+if [ ! -d vendor/ocaml ]; then
+  setup /app http://$sakura/heroku/ocaml-4.01.0-bin.tgz
+fi
+
+if [ ! -d vendor/opam ]; then
+  setup /app http://$sakura/heroku/opam-1.1.0-bin.tgz
+fi
+
+if [ ! -d vendor/.opam ]; then
+  setup /app http://$sakura/heroku/opam-root.tgz
+fi
 
 setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
 export PATH="/app/vendor/pcre/bin:$PATH"
