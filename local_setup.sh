@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-
-set -e
+# heroku run bash
+# . local_setup.sh
 
 export sakura=49.212.130.159:5963
 
@@ -37,6 +37,7 @@ if [ ! -d $OPAMROOT ]; then
   yes N | opam init
   opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
 fi
+eval `opam config env --root=/app/vendor/.opam`
 
 setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
 export PATH="/app/vendor/pcre/bin:$PATH"
