@@ -2,6 +2,12 @@
 
 #heroku run bash 
 
+function save() {
+    $path=$1
+    chmod og+r $path
+    scp -P 11112 $path jun@49.212.130.159:/var/www/heroku
+}
+
 set -e
 
 curl -o custom.tar.bz2 https://bitbucket.org/camlspotter/mutated_ocaml/get/custom.tar.bz2
