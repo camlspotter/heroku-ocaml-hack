@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+set -e
+set -o pipefail
+
+sakura=49.212.130.159:5963
+
+ocaml_url=http://$sakura/heroku/ocaml-4.01.0-bin.tgz
+opam_url=http://$sakura/heroku/opa-1.1.0-bin.tgz
+# opam_lib_url=http://codefirst.org/mzp/opam-lib.tgz
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+function setup() {
+  dir=$1
+  url=$2
+
+  rm -fr $dir
+  mkdir -p $dir
+  echo "fetching $url"
+  curl  $url -s -o - | tar xzf - -C $dir
+}
+
+cd $BUILD_DIR
+echo "-----> Fetching OCaml binaries"
+setup /tmp/ocaml $ocaml_url
+
+echo "-----> Fetching OCaml libraries"
+setup /tmp/opam  $opam_url
+
+# echo "-----> Fetching OPAM libraries"
+# setup /tmp/opam-lib  $opam_lib_url
+
+echo "-----> Prepending $dir/bin to PATH"
+export PATH="/tmp/ocaml/bin:/tmp/opam/bin:$PATH"
+
+echo "-----> Load OPAM"
+source /tmp/opam-lib/opam-init/init.sh
+
+# configure
+if [ -f configure ]; then
+  echo "-----> Configuring"
+
+  mkdir -p $BUILD_DIR/target
+  ./configure --prefix=$BUILD_DIR/target 2>&1 | indent
+fi
+
+# make
+echo "-----> Compiling with Make"
+
+make 2>&1 | indent
+make install 2>&1 | indent
