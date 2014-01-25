@@ -346,10 +346,11 @@ MyOCamlPackage(library_name, files, cmodules, linkopts) =
   export # The above thing is local: need to be exported
 
   CSTUBS=$(addsuffix .o,$(cmodules))
-  CMOS=$(addsuffix .cmo,$(library_name))
-  CMXS=$(addsuffix .cmx,$(library_name))
+  CMO_S=$(addsuffix .cmo,$(library_name))
+  CMX_S=$(addsuffix .cmx,$(library_name))
   CMA=$(library_name).cma
   CMXA=$(library_name).cmxa
+  CMXS=$(library_name).cmxs
 
   if $(not $(defined MyOCamlPackageExtras))
       MyOCamlPackageExtras[]=
@@ -366,12 +367,14 @@ MyOCamlPackage(library_name, files, cmodules, linkopts) =
   .PHONY: install-lib
   install-lib: $(library_name).cmo $(library_name).cmx $(library_name).cma $(library_name).cmxa $(MyOCamlPackageExtras)
 
-  $(CMA) $(CMXA) $(library_name).a $(CSTUBLIBRARIES) : $(CSTUBS) $(CMOS) $(CMXS)
+  $(CMA) $(CMXA) $(CMXS) $(library_name).a $(CSTUBLIBRARIES) : $(CSTUBS) $(CMO_S) $(CMX_S)
       if $(not $(equal $(cmodules), $(EMPTY)))
-          ocamlmklib -verbose -o $(library_name) $(CSTUBS) $(linkopts) $(CMOS) $(CMXS)
+          ocamlmklib -verbose -o $(library_name) $(CSTUBS) $(linkopts) $(CMO_S) $(CMX_S)
+          $(OCamlOpt) -shared -o $(CMXS) $(CMX_S) # CR jfuruse: right?
       else
-          $(OCamlC) -a -o $(CMA) $(CMOS)
-          $(OCamlOpt) -a -o $(CMXA) $(CMXS)
+          $(OCamlC) -a -o $(CMA) $(CMO_S)
+          $(OCamlOpt) -a -o $(CMXA) $(CMX_S)
+          $(OCamlOpt) -shared -o $(CMXS) $(CMX_S)
 
   ## the followings are necessary for packing
 
@@ -390,7 +393,7 @@ MyOCamlPackage(library_name, files, cmodules, linkopts) =
   ## install
 
   # CR jfuruse: x.cmi is required if x.mli does not exist!
-  targets[]=META $(glob i, *.mli) $(library_name).cmi $(library_name).cmo $(library_name).cmx $(library_name).cma $(library_name).cmxa $(library_name).o $(library_name).a $(CSTUBLIBRARIES) $(MyOCamlPackageExtras)
+  targets[]=META $(glob i, *.mli) $(library_name).cmi $(library_name).cmo $(library_name).cmx $(library_name).cma $(library_name).cmxa $(library_name).cmxs $(library_name).o $(library_name).a $(CSTUBLIBRARIES) $(MyOCamlPackageExtras)
 
   targets[]+= $(library_name).cmt
 
@@ -643,7 +646,7 @@ GET_OCAMLFIND_OBJS(pack)=
 #|ditto.
 mkdir_if_not_exists(dir) =
   if $(not $(test -e $(dir))):
-    mkdir $(dir) 
+    mkdir -p $(dir) 
   return
 
 # Pa_ounit test
