@@ -10,11 +10,11 @@ function save() {
 
 set -e
 
-curl -o custom.tar.bz2 https://bitbucket.org/camlspotter/mutated_ocaml/get/custom.tar.bz2
-tar jxvf cusotm.tar.bz2
-cd camlspotter-mutated_ocaml-*
+curl -o ocaml-4.01.0.tar.gz http://caml.inria.fr/pub/distrib/ocaml-4.01/ocaml-4.01.0.tar.gz
+tar zxvf ocaml-4.01.0.tar.gz
+cd ocaml-4.01.0
 ./configure --prefix /app/vendor/ocaml
-make core coreboot world opt opt.opt install
+make world.opt install
 tar zcvf ocaml-4.01.0-bin.tgz vendor/ocaml
 scp -P 11112 ocaml-4.01.0-bin.tgz jun@49.212.130.159:
 
