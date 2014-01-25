@@ -3,8 +3,8 @@
 #heroku run bash 
 
 function save() {
-    $path=$1
-    $dir=$2
+    path=$1
+    dir=$2
     tar zcvf $path $dir
     chmod og+r $path
     scp -P 11112 $path jun@49.212.130.159:/var/www/heroku
@@ -17,7 +17,6 @@ tar zxvf ocaml-4.01.0.tar.gz
 cd ocaml-4.01.0
 ./configure --prefix /app/vendor/ocaml
 make world.opt install
-save vendor/ocaml ocaml-4.01.0-bin.tgz
 
 export PATH=/app/vendor/ocaml/bin:$PATH
 
@@ -28,7 +27,6 @@ cd opam-full-1.1.0
 ./configure --prefix /app/vendor/opam
 cd
 tar zcvf opam-1.1.0-bin.tgz vendor/opam
-save vendor/opam opam-1.1.0-bin.tgz
 
 export PATH=/app/vendor/opam/bin:$PATH
 
@@ -38,3 +36,5 @@ yes N | opam init
 
 eval `opam config env --root=/app/vendor/.opam`
 
+save vendor/ocaml ocaml-4.01.0-bin.tgz
+save vendor/opam opam-1.1.0-bin.tgz
