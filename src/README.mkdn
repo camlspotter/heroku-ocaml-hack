@@ -1,0 +1,51 @@
+OCaml API Search
+===========================================
+
+OVERVIEW
+--------
+
+OCaml API search allows you to search many standard O'Caml libraries
+by either function name, or by approximate type signature. It is based
+on O'Caml Browser.
+
+It is similar to Hoogle, which is a Haskell API search engine.
+
+PREREQUISITES
+-------------
+
+* ocaml 4.00.1
+* omake
+* findlib
+* extlib
+* oUnit(for unit test)
+* CamlGI
+
+INSTALL
+-------
+
+### 3. Download OCaml API search ###
+
+* git clone git://github.com/mzp/ocaml-hoogle.git
+
+### 5. Build OCaml API Search ###
+
+* cd ocaml-hoogle
+* omake
+
+### 6. How to use ###
+
+* run index.cgi as CGI
+
+LICENCE
+-------
+searchid.ml and list2.ml is written by Jacques Garrigue. The licence is LGPL
+
+Other codes is written by MIZUNO Hiroki., The licence is LGPL.
+
+AUTHOR
+------
+MIZUNO "mzp" Hiroki (mzp@ocaml.jp)
+
+AVAILABILITY
+------------
+The complete OCaml API search  distribution can be accessed at this[http://github.com/mzp/ocaml-hoogle].

@@ -1,0 +1,102 @@
+smtp : ocamlnet.3.7.3
+spotxtras : No opam package
+netcgi2 : ocamlnet.3.7.3
+extlib : extlib.1.6.1
+pa_fun_fields : No opam package
+netgssapi : ocamlnet.3.7.3
+core : core.109.53.01
+camlp4 : No opam package
+meta_conv : No opam package
+optcomp : optcomp.1.5
+biniou : biniou.1.0.6
+react : react.0.9.4
+dynlink : No opam package
+unix : No opam package
+menhirLib : No opam package
+res : res.4.0.3
+tiny_json : No opam package
+str : No opam package
+eliom : eliom.3.0.3
+sexplib : sexplib.109.53.00
+yojson : yojson.1.1.6
+pop : ocamlnet.3.7.3
+bitbucket : No opam package
+netshm : ocamlnet.3.7.3
+sexplib_num : sexplib.109.53.00
+js_of_ocaml : js_of_ocaml.1.4.0
+nethttpd : ocamlnet.3.7.3
+spotlib_js : No opam package
+pa_pipebang : pipebang.109.28.00
+camlidl : camlidl.1.05
+el_of_ocaml : js_of_ocaml.1.4.0
+pa_test : pa_test.109.53.00
+netsys : ocamlnet.3.7.3
+netstring : ocamlnet.3.7.3
+num-top : ocamlfind.1.4.0
+pcre : pcre-ocaml.7.0.2
+num : No opam package
+type_conv : type_conv.109.53.00
+pa_ounit : pa_ounit.109.53.00
+bigarray : No opam package
+rpc-auth-local : ocamlnet.3.7.3
+deriving-ocsigen : deriving-ocsigen.0.5
+rpc-generator : No opam package
+netplex : ocamlnet.3.7.3
+dbm : dbm.1.0
+stdlib : No opam package
+pa_ovisitor : No opam package
+netclient : ocamlnet.3.7.3
+utop : utop.1.9
+ocaml_conv : No opam package
+zed : zed.1.2
+ocsigenserver : ocsigenserver.2.2.0
+equeue-ssl : ocamlnet.3.7.3
+tiny_json_conv : No opam package
+lwt : lwt.2.4.4
+monad-custom : No opam package
+netmech-scram : ocamlnet.3.7.3
+tyxml : tyxml.2.2.0
+tumblr : No opam package
+camomile : camomile.0.8.5
+netcgi2-plex : ocamlnet.3.7.3
+curl : ocurl.0.6.0
+netstring-pcre : ocamlnet.3.7.3
+ssl : ssl.0.4.6
+easy-format : easy-format.1.0.1
+netmulticore : ocamlnet.3.7.3
+core_kernel : core_kernel.109.53.00
+comparelib : comparelib.109.27.00
+xml-light : No opam package
+fieldslib : fieldslib.109.20.00
+compiler-libs : No opam package
+bin_prot : bin_prot.109.53.00
+treeprint : No opam package
+equeue-gtk2 : ocamlnet.3.7.3
+nethttpd-for-netcgi2 : No opam package
+orakuda : No opam package
+lablgtk2 : lablgtk.2.16.0
+variantslib : variantslib.109.15.00
+herelib : herelib.109.35.00
+xmlm : xmlm.1.2.0
+ocamlgraph : ocamlgraph.1.8.3
+json-tc-custom : No opam package
+cryptokit : cryptokit.1.9
+findlib : ocamlfind.1.4.0
+graphics : No opam package
+labltk : No opam package
+camlimages : No opam package
+equeue : ocamlnet.3.7.3
+oUnit : ounit.2.0.0
+custom_printf : custom_printf.109.27.00
+rpc-ssl : ocamlnet.3.7.3
+rpc : ocamlnet.3.7.3
+xJs : No opam package
+spotlib : No opam package
+threads : No opam package
+shell : ocamlnet.3.7.3
+ocamlbuild : No opam package
+calendar : calendar.2.03.2
+llvm : No opam package
+netcamlbox : ocamlnet.3.7.3
+lambda-term : lambda-term.1.5
+gapi-ocaml : gapi-ocaml.0.2.1

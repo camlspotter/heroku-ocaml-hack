@@ -1,0 +1,149 @@
+# How-to-build using OMake
+#
+# cp OMakeroot.in OMakeroot # to create OMakeroot for the first time
+
+# If OMakeroot is here, include OMyMakefile
+if $(file-exists OMakeroot)
+   include OMyMakefile
+   export
+
+.PHONY: all install clean
+
+CAMLP4PACKS[]=
+    orakuda
+
+OCAMLPACKS[]= 
+    spotlib
+    orakuda
+
+FILES[] = 
+   spotinstall
+
+OCAMLDEPFLAGS= -syntax camlp4o -package orakuda.syntax
+OCAMLPPFLAGS = -syntax camlp4o -package orakuda.syntax
+
+MyOCamlProgram(spotinstall, $(FILES))
+
+.PHONY: install
+install: spotinstall.opt
+	install spotinstall.opt $(PREFIX)/bin/spotinstall
+OCAMLPACKS[] =
+    spotlib
+    findlib
+    treeprint
+    orakuda
+    tiny_json_conv
+    str
+
+CAMLP4PACKS[] = 
+    meta_conv
+    orakuda
+
+OCAMLFLAGS    += -thread
+
+OCAMLDEPFLAGS= -syntax camlp4o -package meta_conv.syntax,orakuda.syntax
+OCAMLPPFLAGS = -syntax camlp4o -package meta_conv.syntax,orakuda.syntax 
+
+SHARED[]=
+    conf
+    XSpotlib
+    FileDigest
+    xhashset
+    ococonfig
+    xlongident
+    xpath
+    xprinttyp
+    item
+    hashcons
+    hcons
+    odoc_fold
+    extract
+    OCamlDoc
+    load
+    xtype
+    pathfix
+    util
+    cmfile
+    OCamlc
+    OPAM
+    module_path
+    OCamlFind
+    ppath
+    packageshack
+    distthresh
+    match
+    XParser
+    query
+
+FILES[] =
+    $(SHARED)
+    cli
+
+# Uses OCamlDoc modules
+OCAML_OTHER_LIBS += odoc_info
+OCAMLFLAGS    += -I +ocamldoc # ocamldoc is not exported as an OCamlFind package
+
+PROGRAM = oco
+NO_INSTALL=true
+MyOCamlProgram($(PROGRAM), $(FILES))
+
+odoc_fold.ml: odoc/odoc_fold.ml
+    cp odoc/odoc_fold.ml odoc_fold.ml
+
+WithOCamlVeryClean()
+
+Subdirs()
+
+######## eliom
+
+OCAMLPACKS+= eliom.server # it affects the builds above too!!!
+ELIOM_FILES[]=
+    $(SHARED)
+    ElServices
+    ElMisc
+    ElItem
+    ElPager
+    ElLoad
+#    ElOPAM
+    ElPackage
+    ElSearch
+    ElPackages
+
+MyOCamlLibrary(ocoeliom, $(ELIOM_FILES))
+
+.PHONY: eliom
+
+eliom: ocoeliom.cmxs
+    println("Starting server...")
+    mkdir_if_not_exists(local/var/log/oco)
+    mkdir_if_not_exists(local/var/run)
+    mkdir_if_not_exists(local/var/data/oco/ocsipersist)
+    # ocsigenserver.opt automatically replace .cma => cmxs in .conf
+    ocsigenserver.opt -c oco.conf
+    # ocsigenserver -c oco.conf
+
+###### XParser.mly
+
+XParser.ml XParser.mli: XParser.mly
+    ocamlyacc XParser.mly
+    sed -e 's/type token =/type token = Parser.token =/' XParser.ml > XParser.ml.tmp
+    mv XParser.ml.tmp XParser.ml
+    sed -e 's/type token =/type token = Parser.token =/' XParser.mli > XParser.mli.tmp
+    mv XParser.mli.tmp XParser.mli
+
+##### simple eliom test
+
+OCAMLPACKS+= eliom.server # it affects the builds above too!!!
+ELIOM_FILES[]=
+    ElMisc
+    ElServices
+    ElTest
+
+MyOCamlLibrary(etest, $(ELIOM_FILES))
+
+.PHONY: etest
+
+etest: etest.cmxs
+    println("Starting server...")
+    ocsigenserver.opt -c etest.conf
+    # ocsigenserver -c oco.conf

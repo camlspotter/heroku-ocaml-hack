@@ -36,6 +36,7 @@ if [ ! -d $OPAMROOT ]; then
   mkdir /app/vendor/.opam
   yes N | opam init
   opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
+  opam update
 fi
 eval `opam config env --root=/app/vendor/.opam`
 
