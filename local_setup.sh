@@ -22,6 +22,12 @@ function setup() {
   curl  $url -s -o - | tar zxf - -C $dir
 }
 
+function copy() {
+  file=$1
+  chmod og+r $1
+  scp -P 11112 $1 jun@49.212.130.159:/var/www/heroku/
+}
+
 # load 
 # setup / http://49.212.130.159:5963/heroku/my-opam-lib.tgz
 
@@ -47,6 +53,13 @@ export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
 setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
 export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+
+setup /app http://$sakura/heroku/opam-bin.tgz
+export PREFIX=/app/vendor/ocaml
+
+# opam : spotlib orakuda treeprint tiny_json_conv dbm eliom pa_ovisitor
+# 0fix_ocamlcommon_cmxs
+# 0fix_ounit_cmxs
 
 # setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
 # 
