@@ -1,32 +1,3 @@
-# How-to-build using OMake
-#
-# cp OMakeroot.in OMakeroot # to create OMakeroot for the first time
-
-# If OMakeroot is here, include OMyMakefile
-if $(file-exists OMakeroot)
-   include OMyMakefile
-   export
-
-.PHONY: all install clean
-
-CAMLP4PACKS[]=
-    orakuda
-
-OCAMLPACKS[]= 
-    spotlib
-    orakuda
-
-FILES[] = 
-   spotinstall
-
-OCAMLDEPFLAGS= -syntax camlp4o -package orakuda.syntax
-OCAMLPPFLAGS = -syntax camlp4o -package orakuda.syntax
-
-MyOCamlProgram(spotinstall, $(FILES))
-
-.PHONY: install
-install: spotinstall.opt
-	install spotinstall.opt $(PREFIX)/bin/spotinstall
 OCAMLPACKS[] =
     spotlib
     findlib
