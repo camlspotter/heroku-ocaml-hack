@@ -67,8 +67,8 @@ PROGRAM = oco
 NO_INSTALL=true
 MyOCamlProgram($(PROGRAM), $(FILES))
 
-odoc_fold.ml: odoc/odoc_fold.ml
-    cp odoc/odoc_fold.ml odoc_fold.ml
+# odoc_fold.ml: odoc/odoc_fold.ml
+#     cp odoc/odoc_fold.ml odoc_fold.ml
 
 WithOCamlVeryClean()
 
