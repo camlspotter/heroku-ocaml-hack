@@ -19,6 +19,7 @@
     <extension findlib-package="findlib"/>
     <extension findlib-package="treeprint"/>
     <extension findlib-package="orakuda"/>
+    <extension findlib-package="tiny_json_conv"/>
     <!-- ocamldoc has no META -->
     <extension module="/app/vendor/ocaml/lib/ocaml/ocamldoc/odoc_info.cma"/>
     
