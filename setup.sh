@@ -40,9 +40,10 @@ setup /app http://$sakura/heroku/opam-bin.tgz
 eval `opam config env --root=/app/vendor/.opam`
 export PREFIX=/app/vendor/ocaml
 
-# setup /app http://$sakura/heroku/ocamloscope.tgz
+mkdir build
+setup /app/build http://$sakura/heroku/ocamloscope.tgz
 
-cd src
+cd build
 ./0fix_ocamlcommon_cmxs
 ./0fix_ounit_cmxs
 
@@ -65,7 +66,7 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 (cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/extensions) | (cd $WORK; tar xvf -)
 (cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | (cd $WORK; tar xvf -)
 (cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | (cd $WORK; tar xvf -)
-(cd /app; tar cf - src) | (cd $WORK; tar xvf -)
+(cd /app; tar cf - build) | (cd $WORK; tar xvf -)
 
 mkdir -p /app/tmp/var/log/oco
 mkdir -p /app/tmp/var/run

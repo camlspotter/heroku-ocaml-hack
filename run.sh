@@ -4,7 +4,7 @@ echo pwd=`pwd`
 echo find vendor
 find vendor -maxdepth 1 | head -100
 
-cd src
+cd build
 
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
