@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo pwd=`pwd`
+echo find
 find . | head -100
 
 cd src
