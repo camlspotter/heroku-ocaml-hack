@@ -69,3 +69,4 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 
 mkdir -p /app/tmp/var/log/oco
 mkdir -p /app/tmp/var/run
+mkdir -p /app/tmp/var/data/oco/ocsipersist

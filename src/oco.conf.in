@@ -4,7 +4,7 @@
     <port>@PORT@</port>
     
     <logdir>/app/tmp/var/log/oco</logdir>
-    <datadir>local/var/data/oco</datadir>
+    <datadir>/app/tmp/var/data/oco</datadir>
     <charset>utf-8</charset>
     
     <commandpipe>/app/tmp/var/run/oco-cmd</commandpipe>
