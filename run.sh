@@ -13,9 +13,10 @@ export PATH=/app/.opam/system/bin:$PATH
 PORT=$1
 sed -e s/@PORT@/$PORT/g oco.conf.in > oco.conf
 
+head oco.conf
+
 mkdir -p /app/tmp/var/log/oco
 mkdir -p /app/tmp/var/run
 mkdir -p /app/tmp/var/data/oco/ocsipersist
 
-/app/vendor/.opam/system/bin/ocsigenserver.opt -c oco.conf
-
+/app/vendor/.opam/system/bin/ocsigenserver.opt -v -c oco.conf
