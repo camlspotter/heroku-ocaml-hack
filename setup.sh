@@ -48,6 +48,8 @@ export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 setup /app http://$sakura/heroku/opam-bin.tgz
 export PREFIX=/app/vendor/ocaml
 
+setup /app http://$sakura/heroku/ocamloscope.tgz
+
 cd src
 ./0fix_ocamlcommon_cmxs
 ./0fix_ounit_cmxs
