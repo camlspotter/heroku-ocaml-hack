@@ -3,11 +3,11 @@
   <server>
     <port>@PORT@</port>
     
-    <logdir>local/var/log/oco</logdir>
+    <logdir>/app/tmp/var/log/oco</logdir>
     <datadir>local/var/data/oco</datadir>
     <charset>utf-8</charset>
     
-    <commandpipe>local/var/run/oco-cmd</commandpipe>
+    <commandpipe>/app/tmp/var/run/oco-cmd</commandpipe>
     <extension findlib-package="ocsigenserver.ext.staticmod"/>
     <extension findlib-package="ocsigenserver.ext.ocsipersist-dbm"/>
     <extension findlib-package="eliom.server"/>
@@ -17,7 +17,7 @@
     <extension findlib-package="treeprint"/>
     <extension findlib-package="orakuda"/>
     <!-- ocamldoc has no META -->
-    <extension module="/home/jun/.share/prefix/lib/ocaml/ocamldoc/odoc_info.cma"/>
+    <extension module="/app/vendor/ocaml/lib/ocaml/ocamldoc/odoc_info.cma"/>
     
     <host hostfilter="*">
       <static dir="static" />

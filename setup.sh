@@ -67,3 +67,5 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 (cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | (cd $WORK; tar xvf -)
 (cd /app; tar cf - src) | (cd $WORK; tar xvf -)
 
+mkdir -p /app/tmp/var/log/oco
+mkdir -p /app/tmp/var/run
