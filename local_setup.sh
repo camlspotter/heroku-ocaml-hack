@@ -57,6 +57,7 @@ export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 setup /app http://$sakura/heroku/opam-bin.tgz
 export PATH="/app/vendor/.opam/system/bin:$PATH"
 export PREFIX=/app/vendor/ocaml
+eval `opam config env --root=/app/vendor/.opam` # We need it again since opam-bin overwrites something
 
 # opam : spotlib orakuda treeprint tiny_json_conv dbm eliom pa_ovisitor
 # 0fix_ocamlcommon_cmxs
