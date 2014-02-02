@@ -37,6 +37,7 @@ setup /app http://$sakura/heroku/opam-1.1.0-bin.tgz
 export PATH=/app/vendor/opam/bin:$PATH
 
 setup /app http://$sakura/heroku/opam-bin.tgz
+eval `opam config env --root=/app/vendor/.opam`
 export PREFIX=/app/vendor/ocaml
 
 setup /app http://$sakura/heroku/ocamloscope.tgz
