@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo `pwd`
+
 cd src
 
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
