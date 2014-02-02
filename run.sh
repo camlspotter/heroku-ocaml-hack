@@ -1,9 +1,8 @@
 #!/bin/sh
 
 echo pwd=`pwd`
-echo find
-find . -maxdepth 1 | head -10
-find vendor -maxdepth 2 | head -10
+echo find vendor
+find vendor -maxdepth 1 | head -100
 
 cd src
 
