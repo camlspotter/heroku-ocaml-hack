@@ -58,12 +58,11 @@ cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 (cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
 
 # copy opam
-(cd /app; tar cf - vendor/.opam/system/bin) | tar xvf -
-(cd /app; tar cf - `find vendor/.opam -name META`) | tar xvf -
-(cd /app; tar cf - `find vendor/.opam -name '*.cm*'`) | tar xvf -
-(cd /app; tar cf - vendor/.opam/system/lib/findlib.conf) | tar xvf -
-(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/extensions) | tar xvf -
-(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar xvf -
-(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar xvf -
-(cd /app; tar cf - src) | tar xvf -
-
+(cd /app; tar cf - vendor/.opam/system/bin) | tar -C $WORK xvf -
+(cd /app; tar cf - `find vendor/.opam -name META`) | tar -C $WORK xvf -
+(cd /app; tar cf - `find vendor/.opam -name '*.cm*'`) | tar -C $WORK xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/findlib.conf) | tar -C $WORK xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/extensions) | tar -C $WORK xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar -C $WORK xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar -C $WORK xvf -
+(cd /app; tar cf - src) | tar -C $WORK xvf -
