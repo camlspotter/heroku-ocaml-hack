@@ -13,5 +13,5 @@ mkdir -p /app/tmp/var/log/oco
 mkdir -p /app/tmp/var/run
 mkdir -p /app/tmp/var/data/oco/ocsipersist
 
-/app/.opam/system/bin/ocsigenserver.opt -c oco.conf
+/app/vendor/.opam/system/bin/ocsigenserver.opt -c oco.conf
 
