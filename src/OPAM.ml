@@ -41,8 +41,6 @@ let get_current_switch () =
       | [] -> assert false
       | _ -> assert false
 
-let current_switch = get_current_switch ()
-
 type package = {
   name : string;
   version : string;
@@ -89,6 +87,8 @@ let package_dir_of path =
 (* We fix the OPAM root. *)
 
 module Make(A : sig end) = struct
+
+  let current_switch = get_current_switch ()
 
   let opam_build_dir = 
     let prefix = get_prefix () |- !!% "OPAM prefix: %s@." in

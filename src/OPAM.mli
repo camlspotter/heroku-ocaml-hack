@@ -11,9 +11,6 @@ open Spotlib.Spot
 val get_prefix : unit -> string
 (** Check OPAM installation and returns its prefix *)
 
-val current_switch : string
-(** The current OPAM switch *)
-
 type package = {
   name : string;
   version : string;
@@ -37,6 +34,8 @@ val package_dir_of : string -> (string * string) option
 
 module Make(A : sig end) : sig
   
+  val current_switch : string
+  (** The current OPAM switch *)
   
   val opam_build_dir : string
   (** OPAM build dir *)
