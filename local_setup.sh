@@ -55,11 +55,13 @@ export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
 
 setup /app http://$sakura/heroku/opam-bin.tgz
+export PATH="/app/vendor/.opam/system/bin:$PATH"
 export PREFIX=/app/vendor/ocaml
 
 # opam : spotlib orakuda treeprint tiny_json_conv dbm eliom pa_ovisitor
 # 0fix_ocamlcommon_cmxs
 # 0fix_ounit_cmxs
+# (cd /app; tar zcvf ~/src/ocaml-cmxs.tgz vendor/ocaml/lib/ocaml/compiler-libs/ocamlcommon.cmxs vendor/ocaml/lib/ocaml/ocamldoc/odoc_info.cmxs vendor/.opam/system/lib/oUnit/oUnit.cmxs)
 
 # setup /app http://49.212.130.159:5963/heroku/opam-lib.tgz
 # 
