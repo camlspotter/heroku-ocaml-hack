@@ -40,8 +40,6 @@ setup /app http://$sakura/heroku/opam-bin.tgz
 eval `opam config env --root=/app/vendor/.opam`
 export PREFIX=/app/vendor/ocaml
 
-setup /app http://$sakura/heroku/ocaml-cmxs.tgz
-
 setup /app http://$sakura/heroku/ocamloscope.tgz
 
 cd src
@@ -57,7 +55,7 @@ cp -a /app/vendor/pcre $WORK/vendor/pcre
 
 cp -a /app/vendor/gdbm $WORK/vendor/gdbm
 
-(cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
+(cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | (cd $WORK; tar xvf -)
 
 # copy opam
 (cd /app; tar cf - vendor/.opam/system/bin) | (cd $WORK; tar xvf -)
