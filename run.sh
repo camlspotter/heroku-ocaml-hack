@@ -2,7 +2,7 @@
 
 echo pwd=`pwd`
 echo find
-find . | head -100
+find . -maxdepth 2 | head -100
 
 cd src
 
