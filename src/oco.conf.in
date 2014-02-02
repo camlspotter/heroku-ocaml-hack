@@ -26,7 +26,6 @@
       <static dir="static" />
       <static dir="local/var/www/oco/eliom" />
       <eliommodule module="ocoeliom.cma" />
-      <eliom/>
     </host>
   </server>
 </ocsigen>

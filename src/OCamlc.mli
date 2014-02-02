@@ -1,1 +1,1 @@
-val version : string
+val get_version : unit -> string

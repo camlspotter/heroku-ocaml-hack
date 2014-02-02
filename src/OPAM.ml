@@ -141,7 +141,7 @@ module Make(A : sig end) = struct
     )
   
   let base = { name = "<base>";
-               version = OCamlc.version;
+               version = OCamlc.get_version ();
                desc = "base packages installed with the OCaml compiler";
                base = true; }
   
