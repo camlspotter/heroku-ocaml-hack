@@ -22,21 +22,6 @@ function copy() {
   scp -P 11112 $1 jun@49.212.130.159:/var/www/heroku/
 }
 
-setup /app http://$sakura/heroku/ocaml-4.01.0-bin.tgz
-export PATH=/app/vendor/ocaml/bin:$PATH
-
-setup /app http://$sakura/heroku/opam-1.1.0-bin.tgz
-export PATH=/app/vendor/opam/bin:$PATH
-
-export OPAMROOT=/app/vendor/.opam
-if [ ! -d $OPAMROOT ]; then 
-  mkdir /app/vendor/.opam
-  yes N | opam init
-  opam repo add heroku https://github.com/camlspotter/opam-repository-heroku.git
-  opam update
-fi
-eval `opam config env --root=/app/vendor/.opam`
-
 setup /app https://s3-eu-west-1.amazonaws.com/midgard-heroku/pcre.tar.gz
 export PATH="/app/vendor/pcre/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
@@ -44,6 +29,12 @@ export LD_LIBRARY_PATH=/app/vendor/pcre/lib:$LD_LIBRARY_PATH
 setup /app/vendor/gdbm/ http://49.212.130.159:5963/heroku/gdbm-1.tgz
 export PATH="/app/vendor/gdbm/bin:$PATH"
 export LD_LIBRARY_PATH=/app/vendor/gdbm/lib:$LD_LIBRARY_PATH
+
+setup /app http://$sakura/heroku/ocaml-4.01.0-bin.tgz
+export PATH=/app/vendor/ocaml/bin:$PATH
+
+setup /app http://$sakura/heroku/opam-1.1.0-bin.tgz
+export PATH=/app/vendor/opam/bin:$PATH
 
 setup /app http://$sakura/heroku/opam-bin.tgz
 export PREFIX=/app/vendor/ocaml
@@ -53,3 +44,25 @@ setup /app http://$sakura/heroku/ocamloscope.tgz
 cd src
 ./0fix_ocamlcommon_cmxs
 ./0fix_ounit_cmxs
+
+# copy
+
+mkdir -p $WORK/vendor
+mkdir -p $WORK/src
+
+cp -a /app/vendor/pcre $WORK/vendor/pcre
+
+cp -a /app/vendor/gdbm $WORK/vendor/gdbm
+
+(cd /app; tar cf - `find vendor/ocaml  -name '*.cmxs'`) | tar xvf -
+
+# copy opam
+(cd /app; tar cf - vendor/.opam/system/bin) | tar xvf -
+(cd /app; tar cf - `find vendor/.opam -name META`) | tar xvf -
+(cd /app; tar cf - `find vendor/.opam -name '*.cm*'`) | tar xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/findlib.conf) | tar xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/extensions) | tar xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar xvf -
+(cd /app; tar cf - vendor/.opam/system/lib/ocsigenserver/etc) | tar xvf -
+(cd /app; tar cf - src) | tar xvf -
+
