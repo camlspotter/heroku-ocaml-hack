@@ -89,6 +89,7 @@ let query q nopt =
                      found qs q search_time result_time items (Option.default nopt & fun () -> 1))
   
 let () = 
+  prerr_endline "Registering search service...";
   Eliom_registration.Html5.register
     ~service & fun argopt () ->
       match argopt with

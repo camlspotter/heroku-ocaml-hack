@@ -1,0 +1,1 @@
+Feb  3 00:19:28: main: Fatal - Error in configuration file: Error while parsing configuration file: Eliom: while loading ocoeliom.cmxs: error loading shared library: /home/jun/.share/projects/heroku/apps/ocaml-hack/src/ocoeliom.cmxs: undefined symbol: camlJson_conv

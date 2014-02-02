@@ -118,6 +118,7 @@ let query name =
            :: res
 
 let () = 
+  prerr_endline "Registering /package service...";
   Eliom_registration.Html5.register
     ~service & fun arg () ->
       query arg

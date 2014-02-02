@@ -188,3 +188,7 @@ Aug 24 16:15:25: main: Launching a new Ocsidbm process: /home/jun/.opam/system/l
 Aug 24 16:15:26: main: ...Initialization of Ocsipersist-dbm complete
 Aug 24 16:16:30: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "vmware"
 Aug 24 16:16:30: main: Ocsigen has been launched (initialisations ok)
+Feb  3 00:19:26: main: Initializing Ocsipersist-dbm...
+Feb  3 00:19:26: main: Launching a new Ocsidbm process: /home/jun/.opam/system/lib/ocsigenserver/extensions/ocsidbm.opt on directory local/var/data/oco/ocsipersist.
+Feb  3 00:19:28: main: ...Initialization of Ocsipersist-dbm complete
+Feb  3 00:19:28: main: While parsing config file, tag <host>: No defaulthostname, assuming it is "vmware"

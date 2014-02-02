@@ -55,5 +55,6 @@ let packages =
              ]
   
 let () = 
+  prerr_endline "Registering /packages service...";
   Eliom_registration.Html5.register
     ~service:ElServices.Packages.service & fun () () -> packages

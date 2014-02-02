@@ -22,10 +22,10 @@
     <!-- ocamldoc has no META -->
     <extension module="/app/vendor/ocaml/lib/ocaml/ocamldoc/odoc_info.cma"/>
     
-    <host hostfilter="*">
+    <host defaulthostname="ocaml-hack.herokuapp.com" hostfilter="*">
       <static dir="static" />
       <static dir="local/var/www/oco/eliom" />
-      <eliommodule module="ocoeliom.cma" />
+      <eliom module="ocoeliom.cma" />
     </host>
   </server>
 </ocsigen>
