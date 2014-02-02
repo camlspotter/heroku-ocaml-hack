@@ -40,10 +40,10 @@ setup /app http://$sakura/heroku/opam-bin.tgz
 eval `opam config env --root=/app/vendor/.opam`
 export PREFIX=/app/vendor/ocaml
 
-mkdir build
+mkdir /app/build
 setup /app/build http://$sakura/heroku/ocamloscope.tgz
 
-cd build
+cd /app/build
 ./0fix_ocamlcommon_cmxs
 ./0fix_ounit_cmxs
 
